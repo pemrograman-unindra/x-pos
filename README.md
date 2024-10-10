@@ -6,13 +6,13 @@ Point Of Sales Sederhana, Tugas PBO Kelompok 1 Kelas X5C
 NPM          | Nama                                                        | Pembagian Tugas
 -------------|-------------------------------------------------------------|--------------------------
 202243570024 | [Jeffry Luqman](https://github.com/jeffry-luqman)           | Menampilkan daftar dan rincian produk
--            | -                                                           | Menambah data produk
--            | -                                                           | Merubah data produk
--            | -                                                           | Menghapus data produk
--            | -                                                           | Menampilkan daftar dan rincian transaksi penjualan
--            | -                                                           | Menambah transaksi penjualan
--            | -                                                           | Merubah transaksi penjualan
--            | -                                                           | Menghapus transaksi penjualan
+202XXXXXXXXX | -                                                           | Menambah data produk
+202XXXXXXXXX | -                                                           | Merubah data produk
+202XXXXXXXXX | -                                                           | Menghapus data produk
+202XXXXXXXXX | -                                                           | Menampilkan daftar dan rincian transaksi penjualan
+202XXXXXXXXX | -                                                           | Menambah transaksi penjualan
+202XXXXXXXXX | -                                                           | Merubah transaksi penjualan
+202XXXXXXXXX | -                                                           | Menghapus transaksi penjualan
 
 ## Memulai
 1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/), [Java Development Kit](http://jdk.java.net/), dan [Maven](https://maven.apache.org/download.cgi).
@@ -30,29 +30,24 @@ NPM          | Nama                                                        | Pem
 	```
 4. Jalankan aplikasi
 	```bash
-	# menggunakan maven : execute jar file
+	# jika build nya menggunakan maven : execute jar file
 	java -jar target/x-pos-1.0.jar
 
-	# menggunakan maven : run java class
+	# jika build nya menggunakan maven : run java class
 	cd target/classes && java App
 
-	# tanpa menggunakan maven : run java class
+	# jika build nya tanpa menggunakan maven : run java class
 	cd src/main/java && javac App.java
 	```
 
 ## Fitur
-- [x] Menampilkan Daftar Makanan
-- [x] Melihat Rincian Makanan
-- [x] Menambah Data Makanan
-- [x] Merubah Data Makanan
-- [x] Menghapus Data Makanan
-- [x] Menampilkan Daftar Minuman
-- [x] Melihat Rincian Minuman
-- [x] Menambah Data Minuman
-- [x] Merubah Data Minuman
-- [x] Menghapus Data Minuman
-- [x] Menampilkan Daftar Transaksi Penjualan
-- [x] Melihat Rincian Transaksi Penjualan
-- [x] Menambah Data Transaksi Penjualan
-- [x] Merubah Data Transaksi Penjualan
-- [x] Menghapus Data Transaksi Penjualan
+- [ ] Menampilkan Daftar Produk
+- [ ] Melihat Rincian Produk
+- [ ] Menambah Data Produk
+- [ ] Merubah Data Produk
+- [ ] Menghapus Data Produk
+- [ ] Menampilkan Daftar Transaksi Penjualan
+- [ ] Melihat Rincian Transaksi Penjualan
+- [ ] Menambah Transaksi Penjualan
+- [ ] Merubah Transaksi Penjualan
+- [ ] Menghapus Transaksi Penjualan

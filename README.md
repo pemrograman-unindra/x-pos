@@ -1,20 +1,34 @@
 # x-pos
-Point Of Sales Sederhana, Tugas PBO Kelompok 1 Kelas X5C
+Point Of Sales Sederhana
 
-## Anggota
+## Memulai tanpa maven
+1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/) dan [Java Development Kit](http://jdk.java.net/).
+2. Buka terminal atau powershell, clone repositori ini ke komputer kamu dan masuk ke folder yang terbentuk
+	```bash
+	git clone https://github.com/pemrograman-unindra/x-pos.git && cd x-pos
+	```
+3. Lakukan kompilasi aplikasi
+	```bash
+	# linux atau mac
+	javac -d target/classes $(find src/main/java -name "*.java")
 
-NPM          | Nama                                                        | Pembagian Tugas
--------------|-------------------------------------------------------------|--------------------------
-202243570024 | [Jeffry Luqman](https://github.com/jeffry-luqman)           | Menampilkan daftar dan rincian produk
-202XXXXXXXXX | -                                                           | Menambah data produk
-202XXXXXXXXX | -                                                           | Merubah data produk
-202XXXXXXXXX | -                                                           | Menghapus data produk
-202XXXXXXXXX | -                                                           | Menampilkan daftar dan rincian transaksi penjualan
-202XXXXXXXXX | -                                                           | Menambah transaksi penjualan
-202XXXXXXXXX | -                                                           | Merubah transaksi penjualan
-202XXXXXXXXX | -                                                           | Menghapus transaksi penjualan
+	# windows dengan powershell
+	javac -d target/classes (Get-ChildItem -Recurse -Filter *.java src/main/java).FullName
+	```
+4. Jalankan aplikasi
+	```bash
+	java -cp target/classes XPOS
+	```
+5. build file .jar agar dapat didistribusikan
+	```bash
+	jar --create --file target/x-pos-1.0.jar --main-class XPOS -C target/classes .
+	```
+6. Jalankan aplikasi yang sudah di build ke file .jar
+	```bash
+	java -jar target/x-pos-1.0.jar
+	```
 
-## Memulai
+## Memulai dengan maven
 1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/), [Java Development Kit](http://jdk.java.net/), dan [Maven](https://maven.apache.org/download.cgi).
 2. Buka terminal atau powershell, clone repositori ini ke komputer kamu dan masuk ke folder yang terbentuk
 	```bash
@@ -22,30 +36,19 @@ NPM          | Nama                                                        | Pem
 	```
 3. Lakukan kompilasi aplikasi
 	```bash
-	# menggunakan maven
 	mvn clean install
-
-	# tanpa menggunakan maven
-	cd src/main/java && javac App.java
 	```
 4. Jalankan aplikasi
 	```bash
-	# jika build nya menggunakan maven : execute jar file
 	java -jar target/x-pos-1.0.jar
-
-	# jika build nya menggunakan maven : run java class
-	cd target/classes && java App
-
-	# jika build nya tanpa menggunakan maven : run java class
-	cd src/main/java && javac App.java
 	```
 
 ## Fitur
-- [ ] Menampilkan Daftar Produk
-- [ ] Melihat Rincian Produk
-- [ ] Menambah Data Produk
-- [ ] Merubah Data Produk
-- [ ] Menghapus Data Produk
+- [x] Menampilkan Daftar Produk
+- [x] Melihat Rincian Produk
+- [x] Menambah Data Produk
+- [x] Merubah Data Produk
+- [x] Menghapus Data Produk
 - [ ] Menampilkan Daftar Transaksi Penjualan
 - [ ] Melihat Rincian Transaksi Penjualan
 - [ ] Menambah Transaksi Penjualan

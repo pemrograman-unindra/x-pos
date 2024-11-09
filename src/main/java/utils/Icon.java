@@ -1,9 +1,19 @@
 package utils;
 
+import java.nio.charset.Charset;
+
+// pada windows, agar bisa menampilkan icon maka perlu mengaktifkan dukungan unicode UTF-8 :
+// Region > Administratif > Change System Locale > centang opsi "Beta: Use Unicode UTF-8 for worldwide language support" > OK
 public enum Icon {
-	LIST("🗂️"),
-	DETAIL("📋"),
-	ADD("➕"),
+	LOCKED("🔐"),
+	UNLOCKED("🔓"),
+	MENU("🗂️"),
+	PRODUCT("📦"),
+	SALES("🛍️"),
+	EXIT("📴"),
+	LIST("📋"),
+	FIND("🔍"),
+	CREATE("🆕"),
 	EDIT("📝"),
 	DELETE("❌");
 
@@ -13,13 +23,8 @@ public enum Icon {
 		this.value = value;
 	}
 
-	public String getValue() {
-		return value;
-	}
-
 	@Override
 	public String toString() {
-		// jika tidak support utf-8 maka return ""
-		return String.valueOf(value);
+		return value;
 	}
 }

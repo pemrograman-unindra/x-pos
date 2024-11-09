@@ -1,16 +1,16 @@
-import java.io.Console;
 import products.ProductCLIController;
 import users.User;
 import utils.Icon;
+import utils.Input;
 import utils.Output;
 import utils.Style;
 
 public class XPOS {
-	private static Console console = System.console();
 	private static User user = new User("admin", "1234");
 	private static ProductCLIController productCLI = new ProductCLIController();
 
 	public static void main(String[] args) {
+		Output.clearScreen();
 		Output.println("                                ", Style.BG_CYAN);
 		Output.println("     X-POS - Point Of Sales     ", Style.BG_CYAN, Style.BLINK_SLOW);
 		Output.println("                                ", Style.BG_CYAN);
@@ -23,16 +23,16 @@ public class XPOS {
 		Output.println();
 
 		Output.print("Username : ", Style.BLUE);
-		String username = console.readLine();
+		String username = Input.readString();
 
 		Output.print("Password : ", Style.BLUE);
-		char[] passwordArray = console.readPassword();
-		String password = new String(passwordArray);
+		String password = Input.readPassword();
 
 		try {
 			user.login(username, password);
-			Output.println("Login berhasil! " + Icon.UNLOCKED);
+			Output.println("Login berhasil! " + Icon.UNLOCKED, Style.GREEN);
 			Output.println();
+			Input.hold();
 			menu();
 		} catch (Exception e) {
 			Output.println(e.getMessage(), Style.RED);
@@ -44,6 +44,7 @@ public class XPOS {
 	public static void menu() {
 		int choice;
 		do {
+			Output.clearScreen();
 			Output.println("--------------------------------", Style.CYAN);
 			Output.println(Icon.MENU + " Menu");
 			Output.println("--------------------------------", Style.CYAN);
@@ -55,7 +56,7 @@ public class XPOS {
 			Output.println();
 			Output.print("Silakan pilih menu (0-2) : ", Style.BLUE);
 			try {
-				choice = Integer.parseInt(console.readLine());
+				choice = Input.readInteger();
 			} catch (Exception e) {
 				choice = -1;
 			}

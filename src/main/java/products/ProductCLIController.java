@@ -1,20 +1,20 @@
 package products;
 
-import java.io.Console;
 import java.util.List;
-import java.util.Scanner;
 import utils.Icon;
+import utils.Input;
 import utils.Output;
 import utils.Style;
 
 public class ProductCLIController {
-	private static Console console = System.console();
+
+	// tugas no 2 : Encapsulation, productService menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
 	private ProductService productService = new ProductService();
-	private Scanner scanner = new Scanner(System.in);
 
 	public void menu() {
 		int choice;
 		do {
+			Output.clearScreen();
 			Output.println("--------------------------------", Style.CYAN);
 			Output.println(Icon.PRODUCT + " Produk");
 			Output.println("--------------------------------", Style.CYAN);
@@ -29,7 +29,7 @@ public class ProductCLIController {
 			Output.println();
 			Output.print("Silakan pilih menu (0-5) : ", Style. BLUE);
 			try {
-				choice = Integer.valueOf(console.readLine());
+				choice = Input.readInteger();
 			} catch (Exception e) {
 				choice = -1;
 			}
@@ -37,10 +37,10 @@ public class ProductCLIController {
 			Output.println();
 			switch (choice) {
 				case 1 -> getAll();
-				case 2 -> getById();
+				case 2 -> getBySKU();
 				case 3 -> create();
-				case 4 -> updateById();
-				case 5 -> deleteById();
+				case 4 -> updateBySKU();
+				case 5 -> deleteBySKU();
 				default -> {
 					if (choice != 0) {
 						Output.println();
@@ -51,7 +51,9 @@ public class ProductCLIController {
 		} while (choice != 0);
 	}
 
+	// tugas no 2 : Encapsulation, getAll menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
 	private void getAll() {
+		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println(Icon.LIST + " Daftar Produk");
 		Output.println("--------------------------------", Style.CYAN);
@@ -60,20 +62,23 @@ public class ProductCLIController {
 		for (ProductModel product : products) {
 			System.out.println(product);
 		}
+		Input.hold();
 	}
 
-	private void getById() {
+	// tugas no 2 : Encapsulation, getBySKU menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	private void getBySKU() {
+		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println(Icon.FIND + " Rincian Produk");
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 
-		Output.print("Masukan ID produk : ", Style.BLUE);
+		Output.print("Masukan SKU : ", Style.BLUE);
 		try {
-			int id = Integer.valueOf(console.readLine());
-			ProductModel product = productService.getById(id);
+			int sku = Input.readInteger();
+			ProductModel product = productService.getBySKU(sku);
 			Output.println();
-			Output.println("ID    : " + product.getId());
+			Output.println("SKU   : " + product.getSKU());
 			Output.println("Nama  : " + product.getName());
 			Output.println("Harga : " + product.getPrice());
 		} catch (ProductException e) {
@@ -81,12 +86,15 @@ public class ProductCLIController {
 			Output.println(e.getMessage(), Style.RED);
 		} catch (Exception e) {
 			Output.println();
-			Output.println("ID yang anda masukan tidak valid!", Style.RED);
+			Output.println("SKU yang anda masukan tidak valid!", Style.RED);
 		}
 		Output.println();
+		Input.hold();
 	}
 
+	// tugas no 2 : Encapsulation, create menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
 	private void create() {
+		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println(Icon.CREATE + " Tambah Produk");
 		Output.println("--------------------------------", Style.CYAN);
@@ -94,14 +102,14 @@ public class ProductCLIController {
 
 		ProductModel product = new ProductModel();
 		try {
-			Output.print("Masukan ID    : ", Style.BLUE);
-			product.setId(Integer.valueOf(console.readLine()));
+			Output.print("Masukan SKU   : ", Style.BLUE);
+			product.setSKU(Input.readInteger());
 
 			Output.print("Masukan Nama  : ", Style.BLUE);
-			product.setName(console.readLine());
+			product.setName(Input.readString());
 
 			Output.print("Masukan Harga : ", Style.BLUE);
-			product.setPrice(Double.valueOf(console.readLine()));
+			product.setPrice(Input.readDouble());
 
 			productService.create(product);
 
@@ -112,29 +120,32 @@ public class ProductCLIController {
 			Output.println(e.getMessage(), Style.RED);
 		} catch (Exception e) {
 			Output.println();
-			Output.println("Error: " + e.getMessage());
+			Output.println("Error : " + e.getMessage(), Style.RED);
 		}
 		Output.println();
+		Input.hold();
 	}
 
-	private void updateById() {
+	// tugas no 2 : Encapsulation, updateBySKU menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	private void updateBySKU() {
+		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println(Icon.EDIT + " Ubah Produk");
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 
 		try {
-			Output.print("Masukan ID produk yang akan diubah : ", Style.BLUE);
-			int id = Integer.valueOf(console.readLine());
-			ProductModel product = productService.getById(id);
+			Output.print("Masukan SKU yang akan diubah : ", Style.BLUE);
+			int sku = Input.readInteger();
+			ProductModel product = productService.getBySKU(sku);
 
 			Output.print("Masukan Nama  : ", Style.BLUE);
-			product.setName(console.readLine());
+			product.setName(Input.readString());
 
 			Output.print("Masukan Harga : ", Style.BLUE);
-			product.setPrice(Double.valueOf(console.readLine()));
+			product.setPrice(Input.readDouble());
 
-			productService.updateById(id, product);
+			productService.updateBySKU(sku, product);
 
 			Output.println();
 			Output.println("Data produk berhasil disimpan !", Style.GREEN);
@@ -143,22 +154,25 @@ public class ProductCLIController {
 			Output.println(e.getMessage(), Style.RED);
 		} catch (Exception e) {
 			Output.println();
-			Output.println("Error: " + e.getMessage());
+			Output.println("Error : " + e.getMessage(), Style.RED);
 		}
 		Output.println();
+		Input.hold();
 	}
 
-	private void deleteById() {
+	// tugas no 2 : Encapsulation, deleteBySKU menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	private void deleteBySKU() {
+		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println(Icon.DELETE + " Hapus Produk");
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 		try {
-			Output.print("Masukan ID produk yang akan dihapus : ", Style.BLUE);
-			int id = Integer.valueOf(console.readLine());
-			ProductModel product = productService.getById(id);
+			Output.print("Masukan SKU yang akan dihapus : ", Style.BLUE);
+			int sku = Input.readInteger();
+			ProductModel product = productService.getBySKU(sku);
 
-			productService.deleteById(id);
+			productService.deleteBySKU(sku);
 
 			Output.println();
 			Output.println("Data produk berhasil dihapus !", Style.GREEN);
@@ -167,8 +181,9 @@ public class ProductCLIController {
 			Output.println(e.getMessage(), Style.RED);
 		} catch (Exception e) {
 			Output.println();
-			Output.println("Error: " + e.getMessage());
+			Output.println("Error : " + e.getMessage(), Style.RED);
 		}
 		Output.println();
+		Input.hold();
 	}
 }

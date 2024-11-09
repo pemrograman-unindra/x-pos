@@ -44,16 +44,14 @@ public enum Style {
 	BG_HI_CYAN(106),
 	BG_HI_WHITE(107);
 
+	// tugas no 2 : Encapsulation, value menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
 	private final int value;
 
 	Style(int value) {
 		this.value = value;
 	}
 
-	public int getValue() {
-		return value;
-	}
-
+	// tugas no 3 : Override, mengganti nilai yang dikembalikan dari toString bawaan enum
 	@Override
 	public String toString() {
 		return String.valueOf(value);

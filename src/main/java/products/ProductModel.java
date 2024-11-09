@@ -4,8 +4,8 @@ package products;
 public class ProductModel extends ProductAbstract {
 
 	// Constructor untuk inisialisasi objek ProductModel, memanggil constructor superclass
-	public ProductModel(int id, String name, double price) {
-		super(id, name, price);
+	public ProductModel(int sku, String name, double price) {
+		super(sku, name, price);
 	}
 
 	// tugas no 3 : Overload
@@ -15,11 +15,11 @@ public class ProductModel extends ProductAbstract {
 
 	// tugas no 3 : Override, menerapkan metode abstrak setId dari ProductAbstract
 	@Override
-	public void setId(int id) {
-		if (id <= 0) {
-			throw new ProductException("ID produk harus lebih besar dari 0!");
+	public void setSKU(int sku) {
+		if (sku <= 0) {
+			throw new ProductException("SKU produk harus lebih besar dari 0!");
 		}
-		this.id = id;
+		this.sku = sku;
 	}
 
 	// tugas no 3 : Override, menerapkan metode abstrak setName dari ProductAbstract

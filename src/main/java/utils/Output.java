@@ -35,6 +35,7 @@ public class Output {
 		return "\033["+format+"m"+text+"\033["+Style.RESET+"m";
 	}
 
+	// tugas no 2 : Encapsulation, isSupportANSICode menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
 	private static boolean isSupportANSICode() {
 
 		// Kode ANSI tidak didukung pada terminal default (cmd/powershell) sebelum Windows 10 build 16257
@@ -53,5 +54,20 @@ public class Output {
 		}
 
 		return true;
+	}
+
+	public static void clearScreen() {
+		try {
+			// apabila tidak menggunakan os windows dan support kode ANSI maka clear menggunakan kode ANSI
+			if (isSupportANSICode()) {
+				System.out.print("\033\143");
+
+			// apabila menggunakan os windows maka lakukan perintah cls di cmd
+			} else if (System.getProperty("os.name").contains("Windows")) {
+				new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+			}
+		} catch (Exception ex) {
+			System.err.println("Tidak bisa clear screen");
+		}
 	}
 }

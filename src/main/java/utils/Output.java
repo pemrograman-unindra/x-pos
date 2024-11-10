@@ -70,4 +70,77 @@ public class Output {
 			System.err.println("Tidak bisa clear screen");
 		}
 	}
+
+	public static String formatNumber(double value) {
+		return String.format("%,.0f", value).replace(',', '.');
+	}
+
+	// tugas no 3 : Overload, menerapkan overload atas formatNumber
+	public static String formatNumber(int value) {
+		return formatNumber((double) value);
+	}
+
+	// cetak tabel biar rapih
+	public static void printTable(TableColumn[] columns, String[][] rows) {
+
+		// table header
+		printTableLine(columns);
+        String[] header = new String[columns.length];
+        for (int i = 0; i < columns.length; i++) {
+            header[i] = columns[i].label;
+        }
+        printTableRow(columns, header);
+		printTableLine(columns);
+
+		// table body
+		for (String[] row : rows) {
+			printTableRow(columns, row);
+		}
+		printTableLine(columns);
+	}
+
+	// tugas no 2 : Encapsulation, printTableLine menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	private static void printTableLine(TableColumn[] columns) {
+		for (TableColumn column : columns) {
+			print("+-");
+			for (int i = 0; i < column.maxLength; i++) {
+				print("-");
+			}
+			print("-");
+		}
+		println("+");
+	}
+
+	// tugas no 2 : Encapsulation, printTableRow menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	private static void printTableRow(TableColumn[] columns, String[] row) {
+		int i = 0;
+		for (TableColumn column : columns) {			
+			print("|");
+			printTableCell(column.maxLength, row[i]);
+			i++;
+		}
+		println("|");
+	}
+
+	// tugas no 2 : Encapsulation, printTableCell menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	private static void printTableCell(int length, String text) {
+		int maxLength = (length - text.length() + 1);
+
+		// untuk angka maka rata kanan
+		if ((text.charAt(0) >= '0' && text.charAt(0) <= '9') || text.charAt(0) == '-') {
+			for (int i = 0; i < maxLength; i++) {
+				print(" ");
+			}
+			print(text);
+			print(" ");
+
+		// untuk selain angka maka rata kiri
+		} else {
+			print(" ");
+			print(text);
+			for (int i = 0; i < maxLength; i++) {
+				print(" ");
+			}
+		}
+	}
 }

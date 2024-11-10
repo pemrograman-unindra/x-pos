@@ -5,6 +5,7 @@ import utils.Icon;
 import utils.Input;
 import utils.Output;
 import utils.Style;
+import utils.TableColumn;
 
 public class ProductCLIController {
 
@@ -59,9 +60,38 @@ public class ProductCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 		List<ProductModel> products = productService.getAll();
-		for (ProductModel product : products) {
-			System.out.println(product);
+
+		int productCount = products.size();
+		if (productCount > 0) {
+			TableColumn[] columns = new TableColumn[]{
+				new TableColumn("SKU"),
+				new TableColumn("Nama"),
+				new TableColumn("Harga")
+			};
+
+			int i = 0;
+			String[][] rows = new String[products.size()][3];
+			for (ProductModel product : products) {
+				rows[i][0] = Output.formatNumber(product.getSKU());
+				rows[i][1] = product.getName();
+				rows[i][2] = Output.formatNumber(product.getPrice());
+				if (rows[i][0].length() > columns[0].maxLength) {
+					columns[0].maxLength = rows[i][0].length();
+				}
+				if (rows[i][1].length() > columns[1].maxLength) {
+					columns[1].maxLength = rows[i][1].length();
+				}
+				if (rows[i][2].length() > columns[2].maxLength) {
+					columns[2].maxLength = rows[i][2].length();
+				}
+				i++;
+			}
+			Output.printTable(columns, rows);
+		} else {
+			Output.println("Data produk masih kosong!");
 		}
+		Output.println();
+
 		Input.hold();
 	}
 
@@ -80,7 +110,7 @@ public class ProductCLIController {
 			Output.println();
 			Output.println("SKU   : " + product.getSKU());
 			Output.println("Nama  : " + product.getName());
-			Output.println("Harga : " + product.getPrice());
+			Output.println("Harga : " + Output.formatNumber(product.getPrice()));
 		} catch (ProductException e) {
 			Output.println();
 			Output.println(e.getMessage(), Style.RED);

@@ -57,7 +57,7 @@ public class XPOS {
 			Output.println();
 			Output.println("0. Keluar " + Icon.EXIT);
 			Output.println();
-			Output.print("Silakan pilih menu (0-2) : ", Style.BLUE);
+			Output.print("Silakan pilih menu (0-3) : ", Style.BLUE);
 			try {
 				choice = Input.readInteger();
 			} catch (Exception e) {

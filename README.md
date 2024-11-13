@@ -3,7 +3,7 @@ Point Of Sales Sederhana
 
 ## Memulai tanpa maven
 1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/) dan [Java Development Kit](http://jdk.java.net/).
-2. Buka terminal atau powershell, clone repositori ini ke komputer kamu dan masuk ke folder yang terbentuk
+2. Buka terminal (linux atau mac) atau powershell (windows), clone repositori ini ke komputer kamu dan masuk ke folder yang terbentuk
 	```bash
 	git clone https://github.com/pemrograman-unindra/x-pos.git && cd x-pos
 	```
@@ -49,6 +49,11 @@ Point Of Sales Sederhana
 - [x] Menambah Data Produk
 - [x] Merubah Data Produk
 - [x] Menghapus Data Produk
+- [x] Menampilkan Daftar Kelompok Produk
+- [x] Melihat Rincian Kelompok Produk
+- [x] Menambah Data Kelompok Produk
+- [x] Merubah Data Kelompok Produk
+- [x] Menghapus Data Kelompok Produk
 - [ ] Menampilkan Daftar Transaksi Penjualan
 - [ ] Melihat Rincian Transaksi Penjualan
 - [ ] Menambah Transaksi Penjualan

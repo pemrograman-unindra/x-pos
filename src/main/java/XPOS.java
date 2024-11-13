@@ -1,4 +1,5 @@
 import products.ProductCLIController;
+import products.ProductCategoryCLIController;
 import users.User;
 import utils.Icon;
 import utils.Input;
@@ -8,6 +9,7 @@ import utils.Style;
 public class XPOS {
 	private static User user = new User("admin", "1234");
 	private static ProductCLIController productCLI = new ProductCLIController();
+	private static ProductCategoryCLIController productCategoryCLI = new ProductCategoryCLIController();
 
 	public static void main(String[] args) {
 		Output.clearScreen();
@@ -50,7 +52,8 @@ public class XPOS {
 			Output.println("--------------------------------", Style.CYAN);
 			Output.println();
 			Output.println("1. Produk " + Icon.PRODUCT);
-			Output.println("2. Penjualan " + Icon.SALES);
+			Output.println("2. Kategori Produk " + Icon.PRODUCT_CATEGORY);
+			Output.println("3. Penjualan " + Icon.SALES);
 			Output.println();
 			Output.println("0. Keluar " + Icon.EXIT);
 			Output.println();
@@ -65,7 +68,8 @@ public class XPOS {
 			switch (choice) {
 				case 0 -> Output.println("Selamat tinggal! " + Icon.EXIT);
 				case 1 -> productCLI.menu();
-				case 2 -> productCLI.menu();
+				case 2 -> productCategoryCLI.menu();
+				case 3 -> productCLI.menu();
 				default -> Output.println("Pilihan tidak valid!", Style.RED);
 			}
 		} while (choice != 0);

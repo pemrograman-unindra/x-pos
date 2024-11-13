@@ -1,32 +1,27 @@
 package products;
 
-// tugas no 1 : Inheritance, ProductModel mewarisi ProductBaseModel
+// tugas no 1 : Inheritance, ProductCategoryModel mewarisi ProductBaseModel
 // tugas no 5 : Abstract, ProductBaseModel menerapkan abstract sebagai kelas dasar bagi ProductModel dan ProductCategoryModel
 // tugas interface & abstract no 2 : Buatlah sebuah abstract class dengan satu method abstract satu method konkret 
 // Kemudian buatlah dua kelas turunan yang mengimplementasikan method tersebut
-public class ProductModel extends ProductBaseModel {
+public class ProductCategoryModel extends ProductBaseModel {
 
-	private double price;
-	private ProductCategoryModel category;
+	private String rack;
 
-	// Constructor untuk inisialisasi objek ProductModel, memanggil constructor
-	// superclass
-	public ProductModel(String code, String name, double price) {
+	// Constructor untuk inisialisasi objek ProductCategoryModel, memanggil
+	// constructor superclass
+	public ProductCategoryModel(String code, String name, String rack) {
 		super(code, name);
-		this.price = price;
+		this.rack = rack;
 	}
 
 	// tugas no 3 : Overload
-	public ProductModel() {
+	public ProductCategoryModel() {
 		super("", "");
 	}
 
-	public double getPrice() {
-		return price;
-	}
-
-	public ProductCategoryModel getCategory() {
-		return category;
+	public String getRack() {
+		return rack;
 	}
 
 	// tugas no 3 : Override, menerapkan metode abstrak setId dari ProductBaseModel
@@ -48,17 +43,10 @@ public class ProductModel extends ProductBaseModel {
 		this.name = name;
 	}
 
-	public void setPrice(double price) {
-		if (price <= 0) {
-			throw new ProductException("Harga produk harus lebih besar dari 0!");
+	public void setRack(String rack) {
+		if (rack == "") {
+			throw new ProductException("Nomor rak tidak boleh kosong!");
 		}
-		this.price = price;
-	}
-
-	public void setCategory(ProductCategoryModel category) {
-		if (category == null) {
-			throw new ProductException("Kategori produk tidak boleh kosong!");
-		}
-		this.category = category;
+		this.rack = rack;
 	}
 }

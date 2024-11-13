@@ -2,7 +2,8 @@ package users;
 
 public class User {
 
-	// tugas no 2 : Encapsulation, attribute menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	// tugas no 2 : Encapsulation, attribute menggunakan private untuk membatasi
+	// agar hanya bisa diakses dari class yg sama
 	private String username;
 	private String password;
 

@@ -7,6 +7,7 @@ public enum Icon {
 	UNLOCKED("🔓"),
 	MENU("🗂️"),
 	PRODUCT("📦"),
+	PRODUCT_CATEGORY("📥"),
 	SALES("🛍️"),
 	EXIT("📴"),
 	LIST("📋"),
@@ -15,14 +16,16 @@ public enum Icon {
 	EDIT("📝"),
 	DELETE("❌");
 
-	// tugas no 2 : Encapsulation, value menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	// tugas no 2 : Encapsulation, value menggunakan private untuk membatasi agar
+	// hanya bisa diakses dari class yg sama
 	private final String value;
 
 	Icon(String value) {
 		this.value = value;
 	}
 
-	// tugas no 3 : Override, mengganti nilai yang dikembalikan dari toString bawaan enum
+	// tugas no 3 : Override, mengganti nilai yang dikembalikan dari toString bawaan
+	// enum
 	@Override
 	public String toString() {
 		return value;

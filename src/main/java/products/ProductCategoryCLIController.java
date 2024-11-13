@@ -8,21 +8,21 @@ import utils.Output;
 import utils.Style;
 import utils.TableColumn;
 
-public class ProductCLIController {
+public class ProductCategoryCLIController {
 
 	public void menu() {
 		int choice;
 		do {
 			Output.clearScreen();
 			Output.println("--------------------------------", Style.CYAN);
-			Output.println(Icon.PRODUCT + " Produk");
+			Output.println(Icon.PRODUCT_CATEGORY + " Kategori Produk");
 			Output.println("--------------------------------", Style.CYAN);
 			Output.println();
-			Output.println("1. Tampilkan semua produk " + Icon.LIST);
-			Output.println("2. Tampilkan rincian produk " + Icon.FIND);
-			Output.println("3. Tambah data produk " + Icon.CREATE);
-			Output.println("4. Ubah data produk " + Icon.EDIT);
-			Output.println("5. Hapus data produk " + Icon.DELETE);
+			Output.println("1. Tampilkan semua kategori produk " + Icon.LIST);
+			Output.println("2. Tampilkan rincian kategori produk " + Icon.FIND);
+			Output.println("3. Tambah data kategori produk " + Icon.CREATE);
+			Output.println("4. Ubah data kategori produk " + Icon.EDIT);
+			Output.println("5. Hapus data kategori produk " + Icon.DELETE);
 			Output.println();
 			Output.println("0. Keluar " + Icon.EXIT);
 			Output.println();
@@ -51,24 +51,22 @@ public class ProductCLIController {
 	}
 
 	public static void getAll() {
-		List<ProductModel> products = ProductService.useCase.getAll();
+		List<ProductCategoryModel> products = ProductCategoryService.useCase.getAll();
 
 		int productCount = products.size();
 		if (productCount > 0) {
 			TableColumn[] columns = new TableColumn[] {
 					new TableColumn("Kode"),
 					new TableColumn("Nama"),
-					new TableColumn("Kategori"),
-					new TableColumn("Harga")
+					new TableColumn("Nomor Rak")
 			};
 
 			int i = 0;
-			String[][] rows = new String[productCount][4];
-			for (ProductModel product : products) {
+			String[][] rows = new String[productCount][3];
+			for (ProductCategoryModel product : products) {
 				rows[i][0] = product.getCode();
 				rows[i][1] = product.getName();
-				rows[i][2] = product.getCategory().getName();
-				rows[i][3] = Output.formatNumber(product.getPrice());
+				rows[i][2] = product.getRack();
 				if (rows[i][0].length() > columns[0].maxLength) {
 					columns[0].maxLength = rows[i][0].length();
 				}
@@ -78,14 +76,11 @@ public class ProductCLIController {
 				if (rows[i][2].length() > columns[2].maxLength) {
 					columns[2].maxLength = rows[i][2].length();
 				}
-				if (rows[i][3].length() > columns[3].maxLength) {
-					columns[3].maxLength = rows[i][3].length();
-				}
 				i++;
 			}
 			Output.printTable(columns, rows);
 		} else {
-			Output.println("Data produk masih kosong!");
+			Output.println("Data kategori produk masih kosong!");
 		}
 		Output.println();
 	}
@@ -95,7 +90,7 @@ public class ProductCLIController {
 	private void getAll(boolean isMenu) {
 		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
-		Output.println(Icon.LIST + " Daftar Produk");
+		Output.println(Icon.LIST + " Daftar Kategori Produk");
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 		getAll();
@@ -107,19 +102,18 @@ public class ProductCLIController {
 	private void getByCode() {
 		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
-		Output.println(Icon.FIND + " Rincian Produk");
+		Output.println(Icon.FIND + " Rincian Kategori Produk");
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 
-		Output.print("Masukan kode produk : ", Style.BLUE);
+		Output.print("Masukan kode kategori produk : ", Style.BLUE);
 		try {
 			String code = Input.readString();
-			ProductModel product = ProductService.useCase.getByCode(code);
+			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(code);
 			Output.println();
-			Output.println("Kode     : " + product.getCode());
-			Output.println("Nama     : " + product.getName());
-			Output.println("Kategori : " + product.getCategory().getName());
-			Output.println("Harga    : " + Output.formatNumber(product.getPrice()));
+			Output.println("Kode      : " + productCategory.getCode());
+			Output.println("Nama      : " + productCategory.getName());
+			Output.println("Nomor Rak : " + productCategory.getRack());
 		} catch (ProductException e) {
 			Output.println();
 			Output.println(e.getMessage(), Style.RED);
@@ -140,25 +134,21 @@ public class ProductCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 
-		ProductModel product = new ProductModel();
+		ProductCategoryModel productCategory = new ProductCategoryModel();
 		try {
-			Output.print("Masukan kode produk          : ", Style.BLUE);
-			product.setCode(Input.readString());
+			Output.print("Masukan kode      : ", Style.BLUE);
+			productCategory.setCode(Input.readString());
 
-			Output.print("Masukan nama produk          : ", Style.BLUE);
-			product.setName(Input.readString());
+			Output.print("Masukan nama      : ", Style.BLUE);
+			productCategory.setName(Input.readString());
 
-			Output.print("Masukan kode kategori produk : ", Style.BLUE);
-			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(Input.readString());
-			product.setCategory(productCategory);
+			Output.print("Masukan Nomor Rak : ", Style.BLUE);
+			productCategory.setRack(Input.readString());
 
-			Output.print("Masukan harga produk         : ", Style.BLUE);
-			product.setPrice(Input.readDouble());
-
-			ProductService.useCase.create(product);
+			ProductCategoryService.useCase.create(productCategory);
 
 			Output.println();
-			Output.println("Data produk berhasil disimpan !", Style.GREEN);
+			Output.println("Data kategori produk berhasil disimpan !", Style.GREEN);
 		} catch (ProductException e) {
 			Output.println();
 			Output.println(e.getMessage(), Style.RED);
@@ -180,24 +170,20 @@ public class ProductCLIController {
 		Output.println();
 
 		try {
-			Output.print("Masukan kode produk yang akan diubah : ", Style.BLUE);
+			Output.print("Masukan kode kategori produk yang akan diubah : ", Style.BLUE);
 			String code = Input.readString();
-			ProductModel product = ProductService.useCase.getByCode(code);
+			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(code);
 
-			Output.print("Masukan nama produk          : ", Style.BLUE);
-			product.setName(Input.readString());
+			Output.print("Masukan Nama      : ", Style.BLUE);
+			productCategory.setName(Input.readString());
 
-			Output.print("Masukan kode kategori produk : ", Style.BLUE);
-			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(Input.readString());
-			product.setCategory(productCategory);
+			Output.print("Masukan Nomor Rak : ", Style.BLUE);
+			productCategory.setRack(Input.readString());
 
-			Output.print("Masukan harga produk         : ", Style.BLUE);
-			product.setPrice(Input.readDouble());
-
-			ProductService.useCase.updateByCode(code, product);
+			ProductCategoryService.useCase.updateByCode(code, productCategory);
 
 			Output.println();
-			Output.println("Data produk berhasil disimpan !", Style.GREEN);
+			Output.println("Data kategori produk berhasil disimpan !", Style.GREEN);
 		} catch (ProductException e) {
 			Output.println();
 			Output.println(e.getMessage(), Style.RED);
@@ -214,18 +200,18 @@ public class ProductCLIController {
 	private void deleteByCode() {
 		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);
-		Output.println(Icon.DELETE + " Hapus Produk");
+		Output.println(Icon.DELETE + " Hapus Kategori Produk");
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 		try {
-			Output.print("Masukan kode produk yang akan dihapus : ", Style.BLUE);
+			Output.print("Masukan kode kategori produk yang akan dihapus : ", Style.BLUE);
 			String code = Input.readString();
-			ProductService.useCase.getByCode(code);
+			ProductCategoryService.useCase.getByCode(code);
 
-			ProductService.useCase.deleteByCode(code);
+			ProductCategoryService.useCase.deleteByCode(code);
 
 			Output.println();
-			Output.println("Data produk berhasil dihapus !", Style.GREEN);
+			Output.println("Data kategori produk berhasil dihapus !", Style.GREEN);
 		} catch (ProductException e) {
 			Output.println();
 			Output.println(e.getMessage(), Style.RED);

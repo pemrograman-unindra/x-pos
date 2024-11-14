@@ -7,7 +7,7 @@ Point Of Sales Sederhana
 - NPM - [Irvan Cornelius](https://github.com/Irvan1105)
 - 202243570024 - [Jeffry Luqman](https://github.com/jeffry-luqman)
 - NPM - [Mitra Perdana](mitraperdana96@gmail.com)
-- NPM - [Muhammad Sulton Fauzi](https://github.com/msfauzi10)
+- 202243570052 - [Muhammad Sulton Fauzi](https://github.com/msfauzi10)
 - NPM - [Syihabudien Arief](https://github.com/Syihabudien)
 - NPM - [Taufik Alkaf](taufik.alkaf9@gmail.com)
 

@@ -9,7 +9,7 @@ Point Of Sales Sederhana
 - 202043500406 - [Mitra Perdana](mitraperdana96@gmail.com)
 - 202243570052 - [Muhammad Sulton Fauzi](https://github.com/msfauzi10)
 - 202143579025 - [Syihabudien Arief](https://github.com/Syihabudien)
-- NPM - [Taufik Alkaf](taufik.alkaf9@gmail.com)
+- 202043500516 - [Taufik Alkaf](taufik.alkaf9@gmail.com)
 
 ## Memulai tanpa maven
 1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/) dan [Java Development Kit](http://jdk.java.net/).

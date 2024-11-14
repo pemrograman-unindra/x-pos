@@ -26,7 +26,10 @@ public class ProductService implements ProductBaseInterface<ProductModel> {
 	// ProductBaseInterface
 	@Override
 	public ProductModel getByCode(String code) {
-		ProductModel product = products.stream().filter(p -> p.getCode().equals(code)).findFirst().orElse(null);
+		ProductModel product = products.stream()
+				.filter(p -> p.getCode().equals(code))
+				.findFirst()
+				.orElse(null);
 		if (product == null) {
 			throw new ProductException("Produk dengan kode " + code + " tidak ditemukan!");
 		}

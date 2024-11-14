@@ -1,6 +1,17 @@
 # x-pos
 Point Of Sales Sederhana
 
+## Kontributor
+- NPM - [Alamanda Septiara](https://github.com/Almnd3424)
+- NPM - [Fajar Sidik](fajarsidik0327@gmail.com)
+- NPM - [Irvan Cornelius](https://github.com/Irvan1105)
+- 202243570024 - [Jeffry Luqman](https://github.com/jeffry-luqman)
+- NPM - [Mitra Perdana](mitraperdana96@gmail.com)
+- NPM - [Muhammad Sulton Fauzi](https://github.com/msfauzi10)
+- NPM - [Satrio Bagus. D](strbgs21@gmail.com)
+- NPM - [Syihabudien Arief](https://github.com/Syihabudien)
+- NPM - [Taufik Alkaf](taufik.alkaf9@gmail.com)
+
 ## Memulai tanpa maven
 1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/) dan [Java Development Kit](http://jdk.java.net/).
 2. Buka terminal (linux atau mac) atau powershell (windows), clone repositori ini ke komputer kamu dan masuk ke folder yang terbentuk

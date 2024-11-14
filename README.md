@@ -8,7 +8,7 @@ Point Of Sales Sederhana
 - 202243570024 - [Jeffry Luqman](https://github.com/jeffry-luqman)
 - NPM - [Mitra Perdana](mitraperdana96@gmail.com)
 - 202243570052 - [Muhammad Sulton Fauzi](https://github.com/msfauzi10)
-- NPM - [Syihabudien Arief](https://github.com/Syihabudien)
+- 202143579025 - [Syihabudien Arief](https://github.com/Syihabudien)
 - NPM - [Taufik Alkaf](taufik.alkaf9@gmail.com)
 
 ## Memulai tanpa maven

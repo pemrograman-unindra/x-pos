@@ -2,14 +2,14 @@
 Point Of Sales Sederhana
 
 ## Kontributor
-- 202343570068 - [Alamanda Septiara](https://github.com/Almnd3424)
-- 202043500668 - [Fajar Sidik](fajarsidik0327@gmail.com)
+- 202043500406 - [Mitra Perdana](mailto:mitraperdana96@gmail.com)
 - 202043500433 - [Irvan Cornelius](https://github.com/Irvan1105)
-- 202243570024 - [Jeffry Luqman](https://github.com/jeffry-luqman)
-- 202043500406 - [Mitra Perdana](mitraperdana96@gmail.com)
-- 202243570052 - [Muhammad Sulton Fauzi](https://github.com/msfauzi10)
+- 202043500516 - [Taufik Alkaf](https://github.com/Taufikalkaf)
+- 202043500668 - [Fajar Sidik](https://github.com/Fajarsidik27)
 - 202143579025 - [Syihabudien Arief](https://github.com/Syihabudien)
-- 202043500516 - [Taufik Alkaf](taufik.alkaf9@gmail.com)
+- 202243570024 - [Jeffry Luqman](https://github.com/jeffry-luqman)
+- 202243570052 - [Muhammad Sulton Fauzi](https://github.com/msfauzi10)
+- 202343570068 - [Alamanda Septiara](https://github.com/Almnd3424)
 
 ## Memulai tanpa maven
 1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/) dan [Java Development Kit](http://jdk.java.net/).

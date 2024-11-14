@@ -92,6 +92,7 @@ public class ProductCLIController {
 
 	// tugas no 2 : Encapsulation, getAll menggunakan private untuk membatasi agar
 	// hanya bisa diakses dari class yg sama
+	// tugas no 3 : Overload, menerapkan overload atas getAll
 	private void getAll(boolean isMenu) {
 		Output.clearScreen();
 		Output.println("--------------------------------", Style.CYAN);

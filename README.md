@@ -2,7 +2,7 @@
 Point Of Sales Sederhana
 
 ## Kontributor
-- NPM - [Alamanda Septiara](https://github.com/Almnd3424)
+- 202343570068 - [Alamanda Septiara](https://github.com/Almnd3424)
 - NPM - [Fajar Sidik](fajarsidik0327@gmail.com)
 - NPM - [Irvan Cornelius](https://github.com/Irvan1105)
 - 202243570024 - [Jeffry Luqman](https://github.com/jeffry-luqman)

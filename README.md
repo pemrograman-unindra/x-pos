@@ -64,8 +64,8 @@ Point Of Sales Sederhana
 - [x] Menambah Data Kelompok Produk
 - [x] Merubah Data Kelompok Produk
 - [x] Menghapus Data Kelompok Produk
-- [ ] Menampilkan Daftar Transaksi Penjualan
-- [ ] Melihat Rincian Transaksi Penjualan
-- [ ] Menambah Transaksi Penjualan
-- [ ] Merubah Transaksi Penjualan
-- [ ] Menghapus Transaksi Penjualan
+- [x] Menampilkan Daftar Transaksi Penjualan
+- [x] Melihat Rincian Transaksi Penjualan
+- [x] Menambah Transaksi Penjualan
+- [x] Merubah Transaksi Penjualan
+- [x] Menghapus Transaksi Penjualan

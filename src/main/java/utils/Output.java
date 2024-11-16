@@ -1,5 +1,8 @@
 package utils;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Output {
 	public static void print(String text, Style... attribute) {
 		String formattedText = fmt(text, attribute);
@@ -85,6 +88,18 @@ public class Output {
 		return formatNumber((double) value);
 	}
 
+	public static String formatDateTime(LocalDateTime value) {
+		return value.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+	}
+
+	public static String formatDate(LocalDateTime value) {
+		return value.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	}
+
+	public static String formatTime(LocalDateTime value) {
+		return value.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+	}
+
 	// cetak tabel biar rapih
 	public static void printTable(TableColumn[] columns, String[][] rows) {
 
@@ -132,10 +147,11 @@ public class Output {
 	// tugas no 2 : Encapsulation, printTableCell menggunakan private untuk
 	// membatasi agar hanya bisa diakses dari class yg sama
 	private static void printTableCell(int length, String text) {
-		int maxLength = (length - text.length() + 1);
+		int textLength = text.length();
+		int maxLength = (length - textLength + 1);
 
 		// untuk angka maka rata kanan
-		if ((text.charAt(0) >= '0' && text.charAt(0) <= '9') || text.charAt(0) == '-') {
+		if (textLength > 0 && ((text.charAt(0) >= '0' && text.charAt(0) <= '9') || text.charAt(0) == '-')) {
 			for (int i = 0; i < maxLength; i++) {
 				print(" ");
 			}

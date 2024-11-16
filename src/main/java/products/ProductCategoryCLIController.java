@@ -207,8 +207,6 @@ public class ProductCategoryCLIController {
 		try {
 			Output.print("Masukan kode kategori produk yang akan dihapus : ", Style.BLUE);
 			String code = Input.readString();
-			ProductCategoryService.useCase.getByCode(code);
-
 			ProductCategoryService.useCase.deleteByCode(code);
 
 			Output.println();

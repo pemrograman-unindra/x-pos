@@ -4,7 +4,8 @@ import java.io.Console;
 
 public class Input {
 
-	// tugas no 2 : Encapsulation, console menggunakan private untuk membatasi agar hanya bisa diakses dari class yg sama
+	// tugas no 2 : Encapsulation, console menggunakan private untuk membatasi agar
+	// hanya bisa diakses dari class yg sama
 	private static Console console = System.console();
 
 	public static void hold() {
@@ -37,5 +38,14 @@ public class Input {
 		} catch (Exception e) {
 			throw new RuntimeException(val + " bukan angka yang valid!");
 		}
+	}
+
+	public static boolean readBoolean() {
+		String val = console.readLine();
+		if (val.equalsIgnoreCase("y") || val.equalsIgnoreCase("true") || val.equalsIgnoreCase("t")
+				|| val.equalsIgnoreCase("1")) {
+			return true;
+		}
+		return false;
 	}
 }

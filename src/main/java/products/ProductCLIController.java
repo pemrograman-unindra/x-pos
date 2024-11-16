@@ -221,8 +221,6 @@ public class ProductCLIController {
 		try {
 			Output.print("Masukan kode produk yang akan dihapus : ", Style.BLUE);
 			String code = Input.readString();
-			ProductService.useCase.getByCode(code);
-
 			ProductService.useCase.deleteByCode(code);
 
 			Output.println();

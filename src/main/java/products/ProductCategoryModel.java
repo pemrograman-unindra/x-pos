@@ -24,7 +24,8 @@ public class ProductCategoryModel extends ProductBaseModel {
 		return rack;
 	}
 
-	// tugas no 3 : Override, menerapkan metode abstrak setId dari ProductBaseModel
+	// tugas no 3 : Override, menerapkan metode abstrak setCode dari
+	// ProductBaseModel
 	@Override
 	public void setCode(String code) {
 		if (code == "") {

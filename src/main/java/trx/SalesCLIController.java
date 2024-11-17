@@ -3,6 +3,7 @@ package trx;
 import java.util.ArrayList;
 import java.util.List;
 
+import products.ProductCLIController;
 import products.ProductService;
 import utils.Icon;
 import utils.Input;
@@ -114,7 +115,8 @@ public class SalesCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 
-		Output.print("Masukan nomor transaksi : ", Style.BLUE);
+		getAll();
+		Output.print("Nomor transaksi : ", Style.BLUE);
 		try {
 			int code = Input.readInteger();
 			SalesModel sale = SalesService.useCase.getByNumber(code);
@@ -122,8 +124,6 @@ public class SalesCLIController {
 			Output.println("No. Ref         : " + sale.getNumber());
 			Output.println("Tanggal         : " + sale.getDate());
 			Output.println("Jam             : " + sale.getTime());
-			Output.println("Nilai Penjualan : " + Output.formatNumber(sale.getAmount()));
-			Output.println("Rincian         : ");
 
 			TableColumn[] columns = new TableColumn[] {
 					new TableColumn("Deskripsi"),
@@ -161,6 +161,13 @@ public class SalesCLIController {
 				i++;
 			}
 			Output.printTable(columns, rows);
+			TableColumn[] footerColumns = new TableColumn[] {
+					new TableColumn(columns[0].maxLength + columns[1].maxLength + columns[2].maxLength
+							+ columns[3].maxLength + 9),
+					new TableColumn(columns[4].maxLength)
+			};
+			String[][] footerRows = { { "Total", Output.formatNumber(sale.getAmount()) } };
+			Output.printTableFooter(footerColumns, footerRows);
 
 		} catch (TrxException e) {
 			Output.println();
@@ -187,6 +194,8 @@ public class SalesCLIController {
 			boolean isAddProduct = true;
 			do {
 				SalesItemModel item = new SalesItemModel();
+
+				ProductCLIController.getAll();
 				Output.print("Kode produk : ", Style.BLUE);
 				item.setProduct(ProductService.useCase.getByCode(Input.readString()));
 
@@ -229,7 +238,8 @@ public class SalesCLIController {
 		Output.println();
 
 		try {
-			Output.print("Masukan nomor transaksi yang akan diubah : ", Style.BLUE);
+			getAll();
+			Output.print("Nomor transaksi yang akan diubah : ", Style.BLUE);
 			int number = Input.readInteger();
 			SalesModel sale = SalesService.useCase.getByNumber(number);
 			List<SalesItemModel> items = new ArrayList<>();
@@ -237,6 +247,8 @@ public class SalesCLIController {
 			boolean isAddProduct = true;
 			do {
 				SalesItemModel item = new SalesItemModel();
+
+				ProductCLIController.getAll();
 				Output.print("Kode produk : ", Style.BLUE);
 				item.setProduct(ProductService.useCase.getByCode(Input.readString()));
 
@@ -279,7 +291,8 @@ public class SalesCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 		try {
-			Output.print("Masukan nomor transaksi yang akan dihapus : ", Style.BLUE);
+			getAll();
+			Output.print("Nomor transaksi yang akan dihapus : ", Style.BLUE);
 			int number = Input.readInteger();
 			SalesService.useCase.getByNumber(number);
 

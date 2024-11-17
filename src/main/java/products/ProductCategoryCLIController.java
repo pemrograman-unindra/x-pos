@@ -107,7 +107,7 @@ public class ProductCategoryCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 
-		Output.print("Masukan kode kategori produk : ", Style.BLUE);
+		Output.print("Kode kategori produk : ", Style.BLUE);
 		try {
 			String code = Input.readString();
 			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(code);
@@ -137,13 +137,13 @@ public class ProductCategoryCLIController {
 
 		ProductCategoryModel productCategory = new ProductCategoryModel();
 		try {
-			Output.print("Masukan kode      : ", Style.BLUE);
+			Output.print("Kode      : ", Style.BLUE);
 			productCategory.setCode(Input.readString());
 
-			Output.print("Masukan nama      : ", Style.BLUE);
+			Output.print("Nama      : ", Style.BLUE);
 			productCategory.setName(Input.readString());
 
-			Output.print("Masukan Nomor Rak : ", Style.BLUE);
+			Output.print("Nomor Rak : ", Style.BLUE);
 			productCategory.setRack(Input.readString());
 
 			ProductCategoryService.useCase.create(productCategory);
@@ -171,14 +171,14 @@ public class ProductCategoryCLIController {
 		Output.println();
 
 		try {
-			Output.print("Masukan kode kategori produk yang akan diubah : ", Style.BLUE);
+			Output.print("Kode kategori produk yang akan diubah : ", Style.BLUE);
 			String code = Input.readString();
 			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(code);
 
-			Output.print("Masukan Nama      : ", Style.BLUE);
+			Output.print("Nama      : ", Style.BLUE);
 			productCategory.setName(Input.readString());
 
-			Output.print("Masukan Nomor Rak : ", Style.BLUE);
+			Output.print("Nomor Rak : ", Style.BLUE);
 			productCategory.setRack(Input.readString());
 
 			ProductCategoryService.useCase.updateByCode(code, productCategory);
@@ -205,7 +205,7 @@ public class ProductCategoryCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 		try {
-			Output.print("Masukan kode kategori produk yang akan dihapus : ", Style.BLUE);
+			Output.print("Kode kategori produk yang akan dihapus : ", Style.BLUE);
 			String code = Input.readString();
 			ProductCategoryService.useCase.deleteByCode(code);
 

@@ -8,4 +8,8 @@ public class TableColumn {
 		this.label = label;
 		this.maxLength = label.length();
 	}
+
+	public TableColumn(int maxLength) {
+		this.maxLength = maxLength;
+	}
 }

@@ -112,7 +112,8 @@ public class ProductCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 
-		Output.print("Masukan kode produk : ", Style.BLUE);
+		getAll();
+		Output.print("Kode produk : ", Style.BLUE);
 		try {
 			String code = Input.readString();
 			ProductModel product = ProductService.useCase.getByCode(code);
@@ -143,17 +144,18 @@ public class ProductCLIController {
 
 		ProductModel product = new ProductModel();
 		try {
-			Output.print("Masukan kode produk          : ", Style.BLUE);
-			product.setCode(Input.readString());
-
-			Output.print("Masukan nama produk          : ", Style.BLUE);
-			product.setName(Input.readString());
-
-			Output.print("Masukan kode kategori produk : ", Style.BLUE);
+			ProductCategoryCLIController.getAll();
+			Output.print("Kode kategori produk : ", Style.BLUE);
 			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(Input.readString());
 			product.setCategory(productCategory);
 
-			Output.print("Masukan harga produk         : ", Style.BLUE);
+			Output.print("Kode produk          : ", Style.BLUE);
+			product.setCode(Input.readString());
+
+			Output.print("Nama produk          : ", Style.BLUE);
+			product.setName(Input.readString());
+
+			Output.print("Harga produk         : ", Style.BLUE);
 			product.setPrice(Input.readDouble());
 
 			ProductService.useCase.create(product);
@@ -181,18 +183,20 @@ public class ProductCLIController {
 		Output.println();
 
 		try {
-			Output.print("Masukan kode produk yang akan diubah : ", Style.BLUE);
+			getAll();
+			Output.print("Kode produk yang akan diubah : ", Style.BLUE);
 			String code = Input.readString();
 			ProductModel product = ProductService.useCase.getByCode(code);
 
-			Output.print("Masukan nama produk          : ", Style.BLUE);
-			product.setName(Input.readString());
-
-			Output.print("Masukan kode kategori produk : ", Style.BLUE);
+			ProductCategoryCLIController.getAll();
+			Output.print("Kode kategori produk : ", Style.BLUE);
 			ProductCategoryModel productCategory = ProductCategoryService.useCase.getByCode(Input.readString());
 			product.setCategory(productCategory);
 
-			Output.print("Masukan harga produk         : ", Style.BLUE);
+			Output.print("Nama produk          : ", Style.BLUE);
+			product.setName(Input.readString());
+
+			Output.print("Harga produk         : ", Style.BLUE);
 			product.setPrice(Input.readDouble());
 
 			ProductService.useCase.updateByCode(code, product);
@@ -219,7 +223,8 @@ public class ProductCLIController {
 		Output.println("--------------------------------", Style.CYAN);
 		Output.println();
 		try {
-			Output.print("Masukan kode produk yang akan dihapus : ", Style.BLUE);
+			getAll();
+			Output.print("Kode produk yang akan dihapus : ", Style.BLUE);
 			String code = Input.readString();
 			ProductService.useCase.deleteByCode(code);
 

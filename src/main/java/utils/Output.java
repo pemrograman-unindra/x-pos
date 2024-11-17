@@ -119,6 +119,14 @@ public class Output {
 		printTableLine(columns);
 	}
 
+	// cetak tabel footer biar rapih
+	public static void printTableFooter(TableColumn[] columns, String[][] rows) {
+		for (String[] row : rows) {
+			printTableRow(columns, row);
+		}
+		printTableLine(columns);
+	}
+
 	// tugas no 2 : Encapsulation, printTableLine menggunakan private untuk
 	// membatasi agar hanya bisa diakses dari class yg sama
 	private static void printTableLine(TableColumn[] columns) {

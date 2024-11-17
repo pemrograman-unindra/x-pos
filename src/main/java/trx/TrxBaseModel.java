@@ -12,7 +12,7 @@ public abstract class TrxBaseModel<ItemModel> {
 
 	// tugas no 2 : Encapsulation, attribute menggunakan protected untuk membatasi
 	// agar hanya bisa diakses dari subclass dan package yg sama
-	private int lastNumber = 1;
+	private static int lastNumber = 1;
 	private int number;
 	private LocalDateTime dateTime;
 

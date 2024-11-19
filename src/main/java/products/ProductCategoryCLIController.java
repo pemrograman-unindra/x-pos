@@ -44,6 +44,7 @@ public class ProductCategoryCLIController {
 					if (choice != 0) {
 						Output.println();
 						Output.println("Pilihan tidak valid!", Style.RED);
+						Input.hold();
 					}
 				}
 			}

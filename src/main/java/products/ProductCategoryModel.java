@@ -29,7 +29,7 @@ public class ProductCategoryModel extends ProductBaseModel {
 	@Override
 	public void setCode(String code) {
 		if (code == "") {
-			throw new ProductException("Kode produk tidak boleh kosong!");
+			throw new ProductException("Kode kategori produk tidak boleh kosong!");
 		}
 		this.code = code;
 	}
@@ -39,7 +39,7 @@ public class ProductCategoryModel extends ProductBaseModel {
 	@Override
 	public void setName(String name) {
 		if (name == "") {
-			throw new ProductException("Nama produk tidak boleh kosong!");
+			throw new ProductException("Nama kategori produk tidak boleh kosong!");
 		}
 		this.name = name;
 	}

@@ -15,7 +15,8 @@ Point Of Sales Sederhana
 1. Pastikan komputer kamu sudah terinstall [Git](https://git-scm.com/) dan [Java Development Kit](http://jdk.java.net/).
 2. Buka terminal (linux atau mac) atau powershell (windows), clone repositori ini ke komputer kamu dan masuk ke folder yang terbentuk
 	```bash
-	git clone https://github.com/pemrograman-unindra/x-pos.git && cd x-pos
+	git clone https://github.com/pemrograman-unindra/x-pos.git
+	cd x-pos
 	```
 3. Lakukan kompilasi aplikasi
 	```bash

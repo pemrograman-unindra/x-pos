@@ -14,7 +14,7 @@ public class Output {
 		System.out.println(formattedText);
 	}
 
-	// tugas no 3 : Overload, menerapkan overload atas create
+	// tugas no 3 : Overload, menerapkan overload atas println
 	public static void println() {
 		System.out.println();
 	}
